@@ -28,7 +28,7 @@ Normalization can involve **stemming** or **lemmatization**, which are distinct 
 <br><br>
 Lemmatization always gives a valid word while converting to root, while stemming may give roots that are not valid words in the language. Stemming is preferred when the meaning of the word is not important for analysis. Lemmatization would be recommended when the meaning of the word is important for analysis. Since the sentiment being conveyed is highly dependant on the meaning of the words and phrases being used, lemmatization is the prefered method of normalization, although it is more computationally intensive.
 <br><br>
-### Utility of lemmatization in our project
+### Utility of lemmatization in sentiment analysis
 Lemmatization reduces data complexity (by removing variation in word forms), allowing for easier text categorization. In particular, reducing words to their valid roots is useful in sentiment, aspect, topic categorization.
 <br><br>
 **NOTE ON LANGUAGE MODEL**<br>
