@@ -1,6 +1,6 @@
 # Text mining
 ## Definition
-Text mining or text analytics is the process of transforming unstructured text into structured, normalized data. Structured data1 implies
+Text mining or text analytics is the process of transforming unstructured text into structured, normalized data. Structured data implies
 1. Standardised format (i.e., format uniformly used for every use case)
 2. Well-defined structure
 3. Accessible to humans and programs
