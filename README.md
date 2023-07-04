@@ -1,5 +1,6 @@
 # Text preprocessing & text mining guidelines
 ## References
+
 1. Importance of normalization:<br>https://towardsdatascience.com/text-normalization-7ecc8e084e31
 2. Definition of language models:<br>https://towardsdatascience.com/the-beginners-guide-to-language-models-aa47165b57f9
 3. Stemming vs. lemmatization:<br>https://www.analyticssteps.com/blogs/what-stemming-and-lemmatization-nlp
@@ -13,6 +14,7 @@ The goal of text preprocessing is to reduce redundancies in the data, thereby fa
 
 ## Normalization
 Normalization is the process of converting a token into its base form, which involves:
+
 - Removing inflections from a word to obtain the root word
 - Replacing abbreviations with their actual meaning
 - Identify informal intensifiers such as all-caps and character repetitions
@@ -26,22 +28,23 @@ Normalization can be extremely useful, since reducing data size (while retaining
 ### Stemming vs. lemmatization
 Normalization can involve **stemming** or **lemmatization**, which are distinct concepts with certain similarities. Stemming works in a more generalized manner, by reducing a word to a root (stem) derived through rule-based removals of parts of a word. Lemmatization works in a more language-specific manner, by reducing a word to an actual root (lemma) derived using language models and dictionaries. In other words, lemmatization applies available vocabulary and morphological analysis of the words.
 <br><br>
-Lemmatization always gives a valid word while converting to root, while stemming may give roots that are not valid words in the language. Stemming is preferred when the meaning of the word is not important for analysis. Lemmatization would be recommended when the meaning of the word is important for analysis. Since the sentiment being conveyed is highly dependant on the meaning of the words and phrases being used, lemmatization is the prefered method of normalization, although it is more computationally intensive.
-<br><br>
+Lemmatization always gives a valid word while converting to root, while stemming may give roots that are not valid words in the language. Stemming is preferred when the meaning of the word is not important for analysis, whereas lemmatization is recommended when the meaning of the word is important for analysis. Since the sentiment being conveyed is highly dependant on the meaning of the words and phrases being used, lemmatization is the prefered method of normalization, although it is more computationally intensive.
+
 ### Utility of lemmatization in sentiment analysis
 Lemmatization reduces data complexity (by removing variation in word forms), allowing for easier text categorization. In particular, reducing words to their valid roots is useful in sentiment, aspect, topic categorization.
 <br><br>
-**NOTE ON LANGUAGE MODEL**<br>
+_**NOTE: language model**_...<br>
 A statistical language model is a probability distribution of words or word sequences. In practice, a language model gives the probability of a certain word sequence being 'valid' in a given context. Note that validity here is not grammatical validity, but validity with respect to the actual usage of language. In other words, it aims to model how people use language.
 
 ## Removing stopwords
-Stop words are the very common words like 'if', 'but', 'we', 'he', 'she', and 'they'. We can usually remove these words without changing the semantics of a text and doing so often (but not always) improves the performance of a model, , since removing stopwords reduces data size and can reduce the processing of irrelevant data. However, sentiment analysis is more sensitive to
+Stop words are the very common words like 'if', 'but', 'we', 'he', 'she', and 'they' that function as logical connectors in a sentence or references to nouns. We can usually remove these words without changing the semantics of a text and doing so often (but not always) improves the performance of a model, since removing stopwords reduces data size and can reduce the processing of irrelevant data. However, sentiment analysis is more sensitive to
+
 - Sequence of words appearance
 - Word context
-<br><br>
+
 Hence, removing certain stopwords can hide the effect of the sequence of words preceding a word. Furthermore, removing certain stopwords can change the sentiment underlying the text. For example, if 'don't' is considered a stopword, negatives may be interpreted as positives.
 <br><br>
 However, not removing stopwords introduces a big problem with respect to data summarisation and analysis, including sentiment analysis. In data summarisation, for example wordclouds and word frequencies, the most common words are often words that offer little to no information about the unique characteristics, topics or sentiments of a text. Words such as 'the', 'a', 'if' etc. hog the spotlight, reducing the effectiveness of the summarisation of the textual data. In sentiment analysis, the model is forced to process multiple words that are insignificant in helping determing a text's sentiment.
 
 ## Conclusions
-To increase increase the training efficiency and effectiveness and thus improve the performance of our model, we must remove stopwords. But, we must be careful not to remove words that are important in giving context, such as 'not'. Hence, we will use a custom list of stopwords, and also convert abbreviated negatives such as 'don't' to 'not'. For preserving the maximum possible meaning of the text while reducing its complexity, we will only perform lemmatization on our texts.
+To increase increase the training efficiency and effectiveness and thus improve the performance of our model, we must remove stopwords. But, we must be careful not to remove words that are important in giving context, such as 'not'. Hence, we will use a custom list of stopwords, and also convert abbreviated negatives such as 'don't' to 'not'. Also, for preserving the maximum possible meaning of the text while reducing its complexity, we will only perform lemmatization on our texts.
